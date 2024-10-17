@@ -1,4 +1,6 @@
-import questions from "./questions.json" with { type: "json" };
+// import questions from "./questions.json" with { type: "json" };
+
+
 
 let currentQuestionIndex = 0;
 
@@ -7,7 +9,7 @@ const choicesEl = document.getElementById('choices');
 const quizForm = document.getElementById('quiz-form');
 const resultEl = document.getElementById('result');
 
-function loadQuestion() {
+function loadQuestion(questions) {
     // Clear previous results and choices
     resultEl.textContent = '';
     choicesEl.innerHTML = '';
@@ -61,5 +63,12 @@ function checkAnswer(event) {
 // Add event listener for form submission
 quizForm.addEventListener('submit', checkAnswer);
 
-// Load the first question when the page loads
-loadQuestion();
+// Fetch the json file with the questions then Load the first question when the page loads
+fetch('questions.json')
+  .then(response => response.json())
+  .then(questions => {
+    console.log(questions);
+    loadQuestion(questions);
+    })
+  .catch(error => console.error('Error:', error));
+
