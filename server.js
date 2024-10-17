@@ -1,8 +1,16 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+// const http = require('http');
+// const fs = require('fs');
+// const path = require('path');
+
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import url from 'url';
 
 const server = http.createServer((req, res) => {
+    const __filename = url.fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    console.log("__dirname: ", __dirname);
     let filePath = path.join(__dirname, 'client', req.url === '/' ? 'index.html' : req.url);
     let extname = path.extname(filePath);
     let contentType = 'text/html';
