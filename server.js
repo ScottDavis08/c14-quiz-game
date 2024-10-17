@@ -22,6 +22,9 @@ const server = http.createServer((req, res) => {
         case '.js':
             contentType = 'application/javascript';
             break;
+        case '.json':
+            contentType = 'application/json';
+            break;
     }
 
     fs.readFile(filePath, (err, content) => {

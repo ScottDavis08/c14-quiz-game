@@ -1,4 +1,4 @@
-import { questions } from "./questions.js";
+import questions from "./questions.json" with { type: "json" };
 
 let currentQuestionIndex = 0;
 
