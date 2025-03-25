@@ -13,6 +13,7 @@ function loadQuestion(questions) {
     choicesEl.innerHTML = '';
 
     // Load the current question
+    console.log(questions);
     const currentQuestion = questions[currentQuestionIndex];
     questionEl.textContent = currentQuestion.question;
 
@@ -48,7 +49,7 @@ function checkAnswer(event) {
         resultEl.textContent = "Correct!";
         currentQuestionIndex++;
         if (currentQuestionIndex < questions.length) {
-            setTimeout(loadQuestion, 1000); // Load next question after 1 second
+            setTimeout(loadQuestion(questions), 1000); // Load next question after 1 second
         } else {
             resultEl.textContent = "You've completed the quiz!";
             document.getElementById('submit-btn').disabled = true;
